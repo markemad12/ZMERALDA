@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZMERALDA Project</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 :root {
   --color-background-primary: #ffffff;
@@ -20,41 +21,25 @@
   --main-blue: #185FA5;
   --accent-color: #D85A30;
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-sans); background: var(--color-background-secondary); color: var(--color-text-primary);}
 .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
 
-/* ======== تصميم القائمة العلوية ======== */
 .top-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  background: var(--color-background-primary);
-  padding: 15px;
-  border-radius: var(--border-radius-lg);
-  border: 0.5px solid var(--color-border-tertiary);
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+  display: flex; justify-content: center; gap: 15px;
+  background: var(--color-background-primary); padding: 15px;
+  border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary);
+  margin-bottom: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.02);
 }
 .nav-btn {
-  padding: 10px 24px;
-  border: none;
-  background: transparent;
-  font-size: 16px;
-  font-weight: bold;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  border-radius: var(--border-radius-md);
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  padding: 10px 24px; border: none; background: transparent;
+  font-size: 16px; font-weight: bold; color: var(--color-text-secondary);
+  cursor: pointer; border-radius: var(--border-radius-md); transition: all 0.2s;
+  display: flex; align-items: center; gap: 8px;
 }
 .nav-btn:hover { background: var(--color-background-secondary); }
 .nav-btn.active { background: var(--main-blue); color: white; }
 
-/* ======== تصميم الصفحة الرئيسية لـ ZMERALDA ======== */
 #home-view { display: block; animation: fadeIn 0.3s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -63,81 +48,24 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
 .team-badge { display: inline-block; background: #e0efff; color: #185FA5; padding: 5px 12px; border-radius: 20px; font-size: 13px; font-weight: bold; margin-bottom: 15px; }
 .hero-header p { font-size: 16px; color: var(--color-text-secondary); line-height: 1.6; max-width: 800px; margin: 0 auto;}
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 15px;
-  margin-bottom: 3rem;
-}
-.feature-card {
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-tertiary);
-  border-radius: var(--border-radius-lg);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 15px;
-  transition: transform 0.2s;
-}
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 3rem; }
+.feature-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px; transition: transform 0.2s; }
 .feature-card:hover { transform: translateY(-5px); border-color: var(--main-blue); }
-.feature-icon {
-  background: #f0f7ff;
-  color: var(--main-blue);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-}
+.feature-icon { background: #f0f7ff; color: var(--main-blue); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; }
 .feature-text h3 { font-size: 16px; margin-bottom: 8px; color: var(--color-text-primary); }
 .feature-text p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
 
-/* ======== تصميم معرض الصور ======== */
-.gallery-section {
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-tertiary);
-  border-radius: var(--border-radius-lg);
-  padding: 2rem;
-  margin-bottom: 2rem;
-}
-.gallery-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  border-bottom: 0.5px solid var(--color-border-tertiary);
-  padding-bottom: 1rem;
-}
+.gallery-section { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 2rem; margin-bottom: 2rem; }
+.gallery-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); padding-bottom: 1rem; }
 .gallery-header h2 { font-size: 18px; display: flex; align-items: center; gap: 8px; }
 .upload-btn-wrapper { position: relative; overflow: hidden; display: inline-block; }
-.upload-btn {
-  background: var(--main-blue); color: white; padding: 10px 20px;
-  border-radius: var(--border-radius-md); font-size: 13px; font-weight: 500;
-  border: none; cursor: pointer; display: flex; align-items: center; gap: 6px;
-}
-.upload-btn-wrapper input[type=file] {
-  font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer;
-}
-.gallery-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;
-}
-.gallery-img-card {
-  width: 100%; height: 200px; border-radius: var(--border-radius-md);
-  overflow: hidden; border: 0.5px solid var(--color-border-secondary);
-  position: relative;
-}
+.upload-btn { background: var(--main-blue); color: white; padding: 10px 20px; border-radius: var(--border-radius-md); font-size: 13px; font-weight: 500; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.upload-btn-wrapper input[type=file] { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+.gallery-img-card { width: 100%; height: 200px; border-radius: var(--border-radius-md); overflow: hidden; border: 0.5px solid var(--color-border-secondary); position: relative; }
 .gallery-img-card img { width: 100%; height: 100%; object-fit: cover; }
-.empty-gallery {
-  text-align: center; padding: 3rem; color: var(--color-text-tertiary);
-  border: 2px dashed var(--color-border-secondary); border-radius: var(--border-radius-lg);
-  font-size: 14px;
-}
+.empty-gallery { text-align: center; padding: 3rem; color: var(--color-text-tertiary); border: 2px dashed var(--color-border-secondary); border-radius: var(--border-radius-lg); font-size: 14px; }
 
-/* ======== كود المتجر ======== */
 #shop-view { display: none; }
 .store{padding:1.5rem 0;min-height:500px}
 .header{text-align:center;margin-bottom:1.5rem;position:relative}
@@ -181,7 +109,6 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
 .checkout-btn:disabled{background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:not-allowed;border:0.5px solid var(--color-border-tertiary)}
 .empty-cart{text-align:center;padding:1rem 0;font-size:13px;color:var(--color-text-tertiary)}
 .section-sep{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin:4px 0 8px;padding-bottom:6px;border-bottom:0.5px solid var(--color-border-tertiary);grid-column:1/-1}
-/* Checkout screen */
 .checkout-screen{display:none}
 .checkout-screen.active{display:block}
 .back-btn{display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem;padding:0}
@@ -207,8 +134,8 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
 .confirm-total span:last-child{font-size:16px;font-weight:500;color:#185FA5}
 .place-btn{width:100%;padding:12px;background:#185FA5;border:none;border-radius:var(--border-radius-md);font-size:14px;cursor:pointer;color:white;margin-top:12px;font-weight:500}
 .place-btn:hover{background:#0C447C}
+.place-btn:disabled{background:#a0aec0;cursor:not-allowed;}
 .shipping-row{display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);padding:4px 0}
-/* Success */
 .success-screen{display:none;text-align:center;padding:3rem 1rem}
 .success-screen.active{display:block}
 .success-icon{font-size:64px;margin-bottom:1rem}
@@ -217,9 +144,45 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
 .order-num{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:12px 24px;display:inline-block;font-size:13px;color:var(--color-text-secondary);margin-bottom:1.5rem}
 .order-num span{font-weight:500;color:var(--color-text-primary)}
 .new-order-btn{padding:10px 24px;background:#185FA5;color:white;border:none;border-radius:var(--border-radius-md);font-size:14px;cursor:pointer;font-weight:500}
+
+/* ====== EmailJS Sending Overlay ====== */
+.sending-overlay{
+  display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.45);z-index:9999;
+  align-items:center;justify-content:center;
+}
+.sending-overlay.active{display:flex;}
+.sending-box{
+  background:var(--color-background-primary);
+  border-radius:var(--border-radius-lg);
+  padding:2.5rem 2rem;
+  text-align:center;
+  max-width:340px;width:90%;
+  border:0.5px solid var(--color-border-tertiary);
+}
+.sending-spinner{
+  width:48px;height:48px;
+  border:3px solid var(--color-border-secondary);
+  border-top-color:var(--main-blue);
+  border-radius:50%;
+  animation:spin 0.8s linear infinite;
+  margin:0 auto 1rem;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sending-box h3{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px}
+.sending-box p{font-size:13px;color:var(--color-text-secondary)}
 </style>
 </head>
 <body>
+
+<!-- Sending Overlay -->
+<div class="sending-overlay" id="sending-overlay">
+  <div class="sending-box">
+    <div class="sending-spinner"></div>
+    <h3>جاري إرسال الطلب...</h3>
+    <p>من فضلك انتظر لحظة</p>
+  </div>
+</div>
 
 <div class="container">
   <nav class="top-nav">
@@ -235,9 +198,7 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
     <div class="hero-header">
       <span class="team-badge">Team Code: DT_GP_052</span>
       <h1>🤖 مشروع روبوت ZMERALDA</h1>
-      <p>
-        روبوت خدمي بهيكل بشري (Humanoid Service Robot). مشروع فريق Ezmeralda Robot المتأهل لمعسكر الابتكار وريادة الأعمال في تحدي DeepTech Geeks Egypt! مزيج متكامل من التصميم الميكانيكي الدقيق والذكاء الاصطناعي.
-      </p>
+      <p>روبوت خدمي بهيكل بشري (Humanoid Service Robot). مشروع فريق Ezmeralda Robot المتأهل لمعسكر الابتكار وريادة الأعمال في تحدي DeepTech Geeks Egypt! مزيج متكامل من التصميم الميكانيكي الدقيق والذكاء الاصطناعي.</p>
     </div>
 
     <div class="features-grid">
@@ -252,7 +213,7 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
         <div class="feature-icon"><i class="ti ti-cpu" aria-hidden="true"></i></div>
         <div class="feature-text">
           <h3>دوائر إلكترونية بـ Proteus</h3>
-          <p>بوردة تحكم إلكترونية (Custom PCB) مصممة باحترافية على برنامج Proteus لتنظيم الطاقة والتحكم السلس في حركة المحركات (Motor Control).</p>
+          <p>بوردة تحكم إلكترونية (Custom PCB) مصممة باحترافية على برنامج Proteus لتنظيم الطاقة والتحكم السلس في حركة المحركات.</p>
         </div>
       </div>
       <div class="feature-card">
@@ -279,8 +240,7 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
           <input type="file" id="robot-image-upload" multiple accept="image/*" onchange="previewRobotImages(event)">
         </div>
       </div>
-      <div id="gallery-grid" class="gallery-grid">
-        </div>
+      <div id="gallery-grid" class="gallery-grid"></div>
       <div id="empty-gallery-msg" class="empty-gallery">
         <i class="ti ti-robot" style="font-size: 36px; margin-bottom: 12px; display: block; color: var(--color-border-secondary);"></i>
         ارفع هنا صور تصميم الروبوت من SolidWorks، شكل الدوائر من Proteus، أو صور للرأس والمفاصل!
@@ -300,14 +260,12 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
             <span class="cart-badge" id="cart-count">0</span>
           </button>
         </div>
-
         <div class="tabs">
           <button class="tab active" onclick="switchTab('all',this)">الكل</button>
           <button class="tab" onclick="switchTab('body',this)">الهيكل الميكانيكي</button>
           <button class="tab" onclick="switchTab('electronics',this)">إلكترونيات PCB</button>
           <button class="tab" onclick="switchTab('ai',this)">الذكاء الاصطناعي</button>
         </div>
-
         <div class="main-layout">
           <div id="products-grid" class="products-grid"></div>
           <div class="sidebar">
@@ -357,7 +315,6 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
                 <div class="form-group"><label>رقم الهاتف</label><input type="tel" id="f-phone" placeholder="01xxxxxxxxx"/></div>
               </div>
             </div>
-
             <div class="form-section">
               <h3><i class="ti ti-map-pin" aria-hidden="true" style="font-size:16px;vertical-align:-2px;margin-left:6px"></i>عنوان الشحن</h3>
               <div class="form-row full">
@@ -374,30 +331,16 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
                 <div class="form-group"><label>العنوان التفصيلي</label><input type="text" id="f-addr" placeholder="الشارع، رقم المبنى، الشقة..."/></div>
               </div>
             </div>
-
             <div class="form-section">
               <h3><i class="ti ti-credit-card" aria-hidden="true" style="font-size:16px;vertical-align:-2px;margin-left:6px"></i>طريقة الدفع</h3>
               <div class="pay-method">
-                <div class="pay-opt selected" onclick="selectPay(this,'cash')">
-                  <div class="pay-opt-icon">💵</div>
-                  <div class="pay-opt-name">الدفع عند الاستلام</div>
-                </div>
-                <div class="pay-opt" onclick="selectPay(this,'vodafone')">
-                  <div class="pay-opt-icon">📱</div>
-                  <div class="pay-opt-name">فودافون كاش</div>
-                </div>
-                <div class="pay-opt" onclick="selectPay(this,'instapay')">
-                  <div class="pay-opt-icon">💳</div>
-                  <div class="pay-opt-name">إنستاباي</div>
-                </div>
-                <div class="pay-opt" onclick="selectPay(this,'card')">
-                  <div class="pay-opt-icon">🏦</div>
-                  <div class="pay-opt-name">بطاقة بنكية</div>
-                </div>
+                <div class="pay-opt selected" onclick="selectPay(this,'cash')"><div class="pay-opt-icon">💵</div><div class="pay-opt-name">الدفع عند الاستلام</div></div>
+                <div class="pay-opt" onclick="selectPay(this,'vodafone')"><div class="pay-opt-icon">📱</div><div class="pay-opt-name">فودافون كاش</div></div>
+                <div class="pay-opt" onclick="selectPay(this,'instapay')"><div class="pay-opt-icon">💳</div><div class="pay-opt-name">إنستاباي</div></div>
+                <div class="pay-opt" onclick="selectPay(this,'card')"><div class="pay-opt-icon">🏦</div><div class="pay-opt-name">بطاقة بنكية</div></div>
               </div>
             </div>
           </div>
-
           <div>
             <div class="order-confirm">
               <h3 style="font-size:14px;font-weight:500;margin-bottom:12px">ملخص الطلب</h3>
@@ -409,7 +352,7 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
                 <span>الإجمالي</span>
                 <span id="confirm-total-val">0 جنيه</span>
               </div>
-              <button class="place-btn" onclick="placeOrder()">تأكيد الطلب ✓</button>
+              <button class="place-btn" id="place-btn" onclick="placeOrder()">تأكيد الطلب ✓</button>
             </div>
           </div>
         </div>
@@ -418,7 +361,7 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
       <div class="success-screen" id="success-screen">
         <div class="success-icon">✅</div>
         <h2>تم تأكيد طلبك!</h2>
-        <p>شكرًا لتسوقك معنا. سيتم التواصل معك خلال 24 ساعة.</p>
+        <p>شكرًا لتسوقك معنا. تم إرسال تفاصيل طلبك على إيميلنا وسيتم التواصل معك خلال 24 ساعة.</p>
         <div class="order-num">رقم الطلب: <span id="order-num-val">#ZMR-0000</span></div>
         <br>
         <button class="new-order-btn" onclick="resetStore()">طلب جديد</button>
@@ -428,19 +371,26 @@ body{font-family:var(--font-sans); background: var(--color-background-secondary)
 </div>
 
 <script>
+// ======= EmailJS Init =======
+emailjs.init("EQZ3Qsj6YV5hXPUvt");
+
+const EMAILJS_SERVICE  = "service_kjj2yde";
+const EMAILJS_TEMPLATE = "template_27wo2no";
+
+// ======= Main Tab Switch =======
 function switchMainTab(tabId, btn) {
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('home-view').style.display = tabId === 'home' ? 'block' : 'none';
-  document.getElementById('shop-view').style.display = tabId === 'shop' ? 'block' : 'none';
+  document.getElementById('shop-view').style.display  = tabId === 'shop'  ? 'block' : 'none';
 }
 
+// ======= Gallery =======
 function previewRobotImages(event) {
   const files = event.target.files;
   const gallery = document.getElementById('gallery-grid');
   const emptyMsg = document.getElementById('empty-gallery-msg');
   if (files.length > 0) emptyMsg.style.display = 'none';
-
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
     if (!file.type.startsWith('image/')) continue;
@@ -457,161 +407,223 @@ function previewRobotImages(event) {
   }
 }
 
-// ================= سكريبت المتجر =================
+// ======= Store =======
 const PRODUCTS = [
-  {id:'head',   cat:'body',        emoji:'🦾', name:'رأس ZMERALDA',            desc:'كاميرات HD + حساسات صوت + معالج مدمج',         price:1200, svgIds:['rv-head','rv-eye1','rv-eye2','rv-mouth'], color:'#378ADD'},
-  {id:'torso',  cat:'body',        emoji:'🛡️', name:'هيكل الجذع',     desc:'هيكل تيتانيوم مقاوم للصدمات من تصميم SolidWorks',                  price:2500, svgIds:['rv-torso'], color:'#1D9E75'},
-  {id:'larm',   cat:'body',        emoji:'💪', name:'الذراع الأيسر',     desc:'6 محاور حركة ميكانيكية دقيقة',                  price:950,  svgIds:['rv-larm'],  color:'#D85A30'},
-  {id:'rarm',   cat:'body',        emoji:'💪', name:'الذراع الأيمن',     desc:'6 محاور حركة ميكانيكية دقيقة',                  price:950,  svgIds:['rv-rarm'],  color:'#D85A30'},
-  {id:'legs',   cat:'body',        emoji:'🦵', name:'الأرجل',            desc:'محركات هيدروليكية + توازن ذكي للهيكل البشري',                price:1800, svgIds:['rv-lleg','rv-rleg'], color:'#7F77DD'},
-  {id:'servo',  cat:'electronics', emoji:'⚙️', name:'محركات Servo ×6',   desc:'للتحكم في المفاصل الميكانيكية للروبوت',    price:480,  svgIds:['rv-servo'], color:'#EF9F27'},
-  {id:'arduino',cat:'electronics', emoji:'🔌', name:'متحكم مصغر',  desc:'لإدارة دوائر الحركة والأوامر',        price:220,  svgIds:['rv-pcb'],   color:'#639922'},
-  {id:'pcb',    cat:'electronics', emoji:'🟩', name:'Zmeralda PCB',         desc:'لوحة دوائر مصممة على Proteus لتحكم المحركات',      price:350,  svgIds:['rv-pcb'],   color:'#1D9E75'},
-  {id:'ai',     cat:'ai',          emoji:'🧠', name:'نظام التفاعل الصوتي',           desc:'معالج ذكاء اصطناعي للتعرف على الأصوات والوجوه', price:1500, svgIds:['rv-core'],  color:'#7F77DD'},
-  {id:'core',   cat:'ai',          emoji:'💎', name:'ZMERALDA Core',   desc:'قلب الروبوت ونواة الطاقة الأساسية!',   price:680,  svgIds:['rv-core'],  color:'#D85A30'},
-  {id:'power',  cat:'electronics', emoji:'⚡', name:'وحدة الطاقة',       desc:'بطارية 72V لدعم التشغيل الطويل',          price:600,  svgIds:['rv-core'],  color:'#EF9F27'},
+  {id:'head',    cat:'body',        emoji:'🦾', name:'رأس ZMERALDA',           desc:'كاميرات HD + حساسات صوت + معالج مدمج',                        price:1200, svgIds:['rv-head','rv-eye1','rv-eye2','rv-mouth'], color:'#378ADD'},
+  {id:'torso',   cat:'body',        emoji:'🛡️', name:'هيكل الجذع',             desc:'هيكل تيتانيوم مقاوم للصدمات من تصميم SolidWorks',             price:2500, svgIds:['rv-torso'],          color:'#1D9E75'},
+  {id:'larm',    cat:'body',        emoji:'💪', name:'الذراع الأيسر',           desc:'6 محاور حركة ميكانيكية دقيقة',                                price:950,  svgIds:['rv-larm'],           color:'#D85A30'},
+  {id:'rarm',    cat:'body',        emoji:'💪', name:'الذراع الأيمن',           desc:'6 محاور حركة ميكانيكية دقيقة',                                price:950,  svgIds:['rv-rarm'],           color:'#D85A30'},
+  {id:'legs',    cat:'body',        emoji:'🦵', name:'الأرجل',                  desc:'محركات هيدروليكية + توازن ذكي للهيكل البشري',                 price:1800, svgIds:['rv-lleg','rv-rleg'], color:'#7F77DD'},
+  {id:'servo',   cat:'electronics', emoji:'⚙️', name:'محركات Servo ×6',         desc:'للتحكم في المفاصل الميكانيكية للروبوت',                       price:480,  svgIds:['rv-servo'],          color:'#EF9F27'},
+  {id:'arduino', cat:'electronics', emoji:'🔌', name:'متحكم مصغر',              desc:'لإدارة دوائر الحركة والأوامر',                                price:220,  svgIds:['rv-pcb'],            color:'#639922'},
+  {id:'pcb',     cat:'electronics', emoji:'🟩', name:'Zmeralda PCB',            desc:'لوحة دوائر مصممة على Proteus لتحكم المحركات',                 price:350,  svgIds:['rv-pcb'],            color:'#1D9E75'},
+  {id:'ai',      cat:'ai',          emoji:'🧠', name:'نظام التفاعل الصوتي',     desc:'معالج ذكاء اصطناعي للتعرف على الأصوات والوجوه',              price:1500, svgIds:['rv-core'],           color:'#7F77DD'},
+  {id:'core',    cat:'ai',          emoji:'💎', name:'ZMERALDA Core',           desc:'قلب الروبوت ونواة الطاقة الأساسية!',                          price:680,  svgIds:['rv-core'],           color:'#D85A30'},
+  {id:'power',   cat:'electronics', emoji:'⚡', name:'وحدة الطاقة',             desc:'بطارية 72V لدعم التشغيل الطويل',                              price:600,  svgIds:['rv-core'],           color:'#EF9F27'},
 ];
 
-const CAT_LABELS = {body:'الهيكل الميكانيكي',electronics:'إلكترونيات PCB',ai:'ذكاء اصطناعي'};
+const CAT_LABELS = {body:'الهيكل الميكانيكي', electronics:'إلكترونيات PCB', ai:'ذكاء اصطناعي'};
+const PAY_LABELS  = {cash:'الدفع عند الاستلام', vodafone:'فودافون كاش', instapay:'إنستاباي', card:'بطاقة بنكية'};
 let cart = {};
-let currentTab = 'all';
+let currentTab  = 'all';
 let selectedPay = 'cash';
 
-function getFiltered(){
-  if(currentTab==='all') return PRODUCTS;
-  return PRODUCTS.filter(p=>p.cat===currentTab);
+function getFiltered() {
+  return currentTab === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === currentTab);
 }
 
-function renderProducts(){
-  const grid = document.getElementById('products-grid');
+function renderProducts() {
+  const grid     = document.getElementById('products-grid');
   const filtered = getFiltered();
-  let html='';
-  if(currentTab==='all'){
-    const grouped={};
-    filtered.forEach(p=>{ if(!grouped[p.cat]) grouped[p.cat]=[]; grouped[p.cat].push(p); });
-    ['body','electronics','ai'].forEach(cat=>{
-      if(!grouped[cat]) return;
-      html+=`<div class="section-sep">${CAT_LABELS[cat]}</div>`;
-      grouped[cat].forEach(p=>html+=productCard(p));
+  let html = '';
+  if (currentTab === 'all') {
+    const grouped = {};
+    filtered.forEach(p => { if (!grouped[p.cat]) grouped[p.cat] = []; grouped[p.cat].push(p); });
+    ['body','electronics','ai'].forEach(cat => {
+      if (!grouped[cat]) return;
+      html += `<div class="section-sep">${CAT_LABELS[cat]}</div>`;
+      grouped[cat].forEach(p => html += productCard(p));
     });
   } else {
-    filtered.forEach(p=>html+=productCard(p));
+    filtered.forEach(p => html += productCard(p));
   }
-  grid.innerHTML=html;
+  grid.innerHTML = html;
 }
 
-function productCard(p){
-  const qty = cart[p.id]||0;
+function productCard(p) {
+  const qty = cart[p.id] || 0;
   return `<div class="product-card" id="pcard-${p.id}">
-    ${qty>0?`<div class="in-cart-badge">في العربة ×${qty}</div>`:''}
+    ${qty > 0 ? `<div class="in-cart-badge">في العربة ×${qty}</div>` : ''}
     <span class="prod-emoji">${p.emoji}</span>
     <div class="prod-cat">${CAT_LABELS[p.cat]}</div>
     <div class="prod-name">${p.name}</div>
     <div class="prod-desc">${p.desc}</div>
     <div class="prod-footer">
       <div class="prod-price">${p.price.toLocaleString()} جنيه</div>
-      ${qty===0
+      ${qty === 0
         ? `<button class="add-btn" onclick="addToCart('${p.id}')">+ أضف</button>`
         : `<div class="qty-ctrl">
-            <button class="qty-btn" onclick="changeQty('${p.id}',-1)">−</button>
-            <span class="qty-val">${qty}</span>
-            <button class="qty-btn" onclick="changeQty('${p.id}',1)">+</button>
-          </div>`
-      }
+             <button class="qty-btn" onclick="changeQty('${p.id}',-1)">−</button>
+             <span class="qty-val">${qty}</span>
+             <button class="qty-btn" onclick="changeQty('${p.id}',1)">+</button>
+           </div>`}
     </div>
   </div>`;
 }
 
-function addToCart(id){ cart[id]=(cart[id]||0)+1; refresh(); }
-function changeQty(id,delta){ cart[id]=(cart[id]||0)+delta; if(cart[id]<=0) delete cart[id]; refresh(); }
-function removeFromCart(id){ delete cart[id]; refresh(); }
-function refresh(){ renderProducts(); renderCart(); updateRobot(); }
+function addToCart(id)          { cart[id] = (cart[id] || 0) + 1;  refresh(); }
+function changeQty(id, delta)   { cart[id] = (cart[id] || 0) + delta; if (cart[id] <= 0) delete cart[id]; refresh(); }
+function removeFromCart(id)     { delete cart[id]; refresh(); }
+function refresh()              { renderProducts(); renderCart(); updateRobot(); }
 
-function renderCart(){
-  const list=document.getElementById('cart-list');
-  const totalSec=document.getElementById('cart-total-sec');
-  const btn=document.getElementById('checkout-btn');
-  const countEl=document.getElementById('cart-count');
-  const keys=Object.keys(cart);
-  
-  let totalCount=0, totalPrice=0;
-  keys.forEach(id=>{ totalCount+=cart[id]; });
-  countEl.textContent=totalCount;
-
-  if(keys.length===0){
-    list.innerHTML='<div class="empty-cart">العربة فارغة</div>';
-    totalSec.style.display='none';
-    btn.disabled=true;
+function renderCart() {
+  const list     = document.getElementById('cart-list');
+  const totalSec = document.getElementById('cart-total-sec');
+  const btn      = document.getElementById('checkout-btn');
+  const countEl  = document.getElementById('cart-count');
+  const keys     = Object.keys(cart);
+  let totalCount = 0, totalPrice = 0;
+  keys.forEach(id => { totalCount += cart[id]; });
+  countEl.textContent = totalCount;
+  if (keys.length === 0) {
+    list.innerHTML = '<div class="empty-cart">العربة فارغة</div>';
+    totalSec.style.display = 'none';
+    btn.disabled = true;
     return;
   }
-
-  let html='';
-  keys.forEach(id=>{
-    const p=PRODUCTS.find(x=>x.id===id);
-    if(!p) return;
-    const sub=p.price*cart[id];
-    totalPrice+=sub;
-    html+=`<div class="cart-item">
+  let html = '';
+  keys.forEach(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    if (!p) return;
+    const sub = p.price * cart[id];
+    totalPrice += sub;
+    html += `<div class="cart-item">
       <span class="cart-item-name">${p.emoji} ${p.name}</span>
       <span class="cart-item-qty">×${cart[id]}</span>
       <span class="cart-item-price">${sub.toLocaleString()}</span>
       <button class="cart-item-del" onclick="removeFromCart('${id}')"><i class="ti ti-x" aria-hidden="true"></i></button>
     </div>`;
   });
-  list.innerHTML=html;
-  document.getElementById('cart-total').textContent=totalPrice.toLocaleString()+' جنيه';
-  totalSec.style.display='block';
-  btn.disabled=false;
+  list.innerHTML = html;
+  document.getElementById('cart-total').textContent = totalPrice.toLocaleString() + ' جنيه';
+  totalSec.style.display = 'block';
+  btn.disabled = false;
 }
 
-function updateRobot(){
-  PRODUCTS.forEach(p=>{
-    const active=cart[p.id]>0;
-    p.svgIds.forEach(sid=>{
-      const el=document.getElementById(sid);
-      if(el){ el.setAttribute('fill', active?p.color:'#B4B2A9'); el.setAttribute('opacity', active?'0.85':'0.25'); }
+function updateRobot() {
+  PRODUCTS.forEach(p => {
+    const active = cart[p.id] > 0;
+    p.svgIds.forEach(sid => {
+      const el = document.getElementById(sid);
+      if (el) { el.setAttribute('fill', active ? p.color : '#B4B2A9'); el.setAttribute('opacity', active ? '0.85' : '0.25'); }
     });
   });
 }
 
-function switchTab(t,btn){ currentTab=t; document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderProducts(); }
-function goCheckout(){
-  const keys=Object.keys(cart);
-  if(keys.length===0) return;
-  let html='', total=0;
-  keys.forEach(id=>{
-    const p=PRODUCTS.find(x=>x.id===id);
-    if(!p) return;
-    const sub=p.price*cart[id]; total+=sub;
-    html+=`<div class="confirm-item"><span>${p.emoji} ${p.name} ×${cart[id]}</span><span>${sub.toLocaleString()} جنيه</span></div>`;
+function switchTab(t, btn) {
+  currentTab = t;
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts();
+}
+
+function goCheckout() {
+  const keys = Object.keys(cart);
+  if (keys.length === 0) return;
+  let html = '', total = 0;
+  keys.forEach(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    if (!p) return;
+    const sub = p.price * cart[id]; total += sub;
+    html += `<div class="confirm-item"><span>${p.emoji} ${p.name} ×${cart[id]}</span><span>${sub.toLocaleString()} جنيه</span></div>`;
   });
-  document.getElementById('confirm-items').innerHTML=html;
-  document.getElementById('confirm-total-val').textContent=(total+35).toLocaleString()+' جنيه';
-  document.getElementById('shop-screen').style.display='none';
-  document.getElementById('checkout-screen').style.display='block';
-  document.getElementById('success-screen').style.display='none';
-}
-function goShop(){ document.getElementById('shop-screen').style.display='block'; document.getElementById('checkout-screen').style.display='none'; }
-function selectPay(el,method){ document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); selectedPay=method; }
-
-function placeOrder(){
-  const fname=document.getElementById('f-fname').value.trim();
-  const phone=document.getElementById('f-phone').value.trim();
-  const gov=document.getElementById('f-gov').value;
-  if(!fname||!phone||!gov){ alert('من فضلك أكمل البيانات المطلوبة: الاسم، الهاتف، والمحافظة'); return; }
-  document.getElementById('order-num-val').textContent='#ZMR-'+Math.floor(1000+Math.random()*9000);
-  document.getElementById('checkout-screen').style.display='none';
-  document.getElementById('success-screen').style.display='block';
+  document.getElementById('confirm-items').innerHTML = html;
+  document.getElementById('confirm-total-val').textContent = (total + 35).toLocaleString() + ' جنيه';
+  document.getElementById('shop-screen').style.display    = 'none';
+  document.getElementById('checkout-screen').style.display = 'block';
+  document.getElementById('success-screen').style.display  = 'none';
 }
 
-function resetStore(){
-  cart={};
-  document.getElementById('success-screen').style.display='none';
-  document.getElementById('shop-screen').style.display='block';
-  document.getElementById('checkout-screen').style.display='none';
-  document.getElementById('f-fname').value=''; document.getElementById('f-lname').value='';
-  document.getElementById('f-email').value=''; document.getElementById('f-phone').value='';
-  document.getElementById('f-gov').value=''; document.getElementById('f-addr').value='';
+function goShop() {
+  document.getElementById('shop-screen').style.display    = 'block';
+  document.getElementById('checkout-screen').style.display = 'none';
+}
+
+function selectPay(el, method) {
+  document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedPay = method;
+}
+
+// ======= Place Order + EmailJS =======
+function placeOrder() {
+  const fname = document.getElementById('f-fname').value.trim();
+  const lname = document.getElementById('f-lname').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const gov   = document.getElementById('f-gov').value;
+  const addr  = document.getElementById('f-addr').value.trim();
+
+  if (!fname || !phone || !gov) {
+    alert('من فضلك أكمل البيانات المطلوبة: الاسم، الهاتف، والمحافظة');
+    return;
+  }
+
+  // Build order details
+  const keys = Object.keys(cart);
+  let itemsList = '';
+  let total = 0;
+  keys.forEach(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    if (!p) return;
+    const sub = p.price * cart[id];
+    total += sub;
+    itemsList += `${p.emoji} ${p.name} × ${cart[id]}  →  ${sub.toLocaleString()} جنيه\n`;
+  });
+  const grandTotal = total + 35;
+  const orderNum   = '#ZMR-' + Math.floor(1000 + Math.random() * 9000);
+
+  // Show spinner
+  const overlay = document.getElementById('sending-overlay');
+  const placeBtn = document.getElementById('place-btn');
+  overlay.classList.add('active');
+  placeBtn.disabled = true;
+
+  const templateParams = {
+    order_id          : orderNum,
+    customer_name     : fname + ' ' + lname,
+    customer_email    : email || 'غير محدد',
+    customer_phone    : phone,
+    customer_gov      : gov,
+    customer_address  : addr || 'غير محدد',
+    payment_method    : PAY_LABELS[selectedPay] || selectedPay,
+    order_items       : itemsList,
+    order_subtotal    : total.toLocaleString() + ' جنيه',
+    order_shipping    : '35 جنيه',
+    order_total       : grandTotal.toLocaleString() + ' جنيه',
+  };
+
+  emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, templateParams)
+    .then(function() {
+      overlay.classList.remove('active');
+      placeBtn.disabled = false;
+      document.getElementById('order-num-val').textContent = orderNum;
+      document.getElementById('checkout-screen').style.display = 'none';
+      document.getElementById('success-screen').style.display  = 'block';
+    }, function(error) {
+      overlay.classList.remove('active');
+      placeBtn.disabled = false;
+      alert('حدث خطأ أثناء الإرسال: ' + JSON.stringify(error) + '\nتأكد من إعدادات EmailJS.');
+    });
+}
+
+function resetStore() {
+  cart = {};
+  document.getElementById('success-screen').style.display  = 'none';
+  document.getElementById('shop-screen').style.display     = 'block';
+  document.getElementById('checkout-screen').style.display = 'none';
+  ['f-fname','f-lname','f-email','f-phone','f-addr'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-gov').value = '';
   refresh();
 }
 
